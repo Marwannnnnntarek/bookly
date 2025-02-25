@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class slideAnimation extends StatelessWidget {
-  const slideAnimation({
+class SlideAnimation extends StatelessWidget {
+  const SlideAnimation({
     super.key,
     required this.myAnimation,
   });
@@ -10,7 +10,8 @@ class slideAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(animation: myAnimation,
+    return AnimatedBuilder(
+      animation: myAnimation,
     builder: (context, _) {
       return SlideTransition(
         position: myAnimation,

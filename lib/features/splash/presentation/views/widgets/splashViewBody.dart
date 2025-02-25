@@ -5,7 +5,6 @@ import 'package:bookly/features/splash/presentation/views/widgets/slideAnimation
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -26,8 +25,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
     navigateAnimationToHome();
   }
 
-  
-
   @override
   void dispose() {
     super.dispose();
@@ -36,18 +33,17 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return 
+       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Image.asset(AssetsData.logo),
-          slideAnimation(myAnimation: myAnimation)
-          
+          SlideAnimation(myAnimation: myAnimation),
         ],
-      ),
-    );
+      );
   }
+
   void navigateAnimationToHome() {
     Future.delayed(const Duration(seconds: 4), () {
       Get.to(
@@ -55,7 +51,6 @@ class _SplashViewBodyState extends State<SplashViewBody>
         transition: Transition.fade,
         duration: kTranstionDuration,
       );
-      
     });
   }
 
@@ -67,9 +62,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
     myAnimation = Tween<Offset>(
       begin: const Offset(0, 2),
-      end: Offset.zero,)
-      .animate(animationController);
+      end: Offset.zero,
+    ).animate(animationController);
     animationController.forward();
   }
 }
-
