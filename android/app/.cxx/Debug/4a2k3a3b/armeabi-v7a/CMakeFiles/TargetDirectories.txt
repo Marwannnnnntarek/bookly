@@ -1,0 +1,2 @@
+/home/user/bookly/android/app/.cxx/Debug/4a2k3a3b/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/user/bookly/android/app/.cxx/Debug/4a2k3a3b/armeabi-v7a/CMakeFiles/rebuild_cache.dir

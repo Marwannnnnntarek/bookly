@@ -1,0 +1,1 @@
+/home/user/bookly/build/app/intermediates/cxx/Debug/4a2k3a3b/obj/x86
