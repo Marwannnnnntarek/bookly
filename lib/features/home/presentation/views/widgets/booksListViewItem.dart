@@ -7,8 +7,6 @@ class BooksListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // used media quiry to make it more responsive with the of the screen
-      height: MediaQuery.of(context).size.height * 0.3,
       child: AspectRatio(
         aspectRatio: 2 / 3,
         child: Container(

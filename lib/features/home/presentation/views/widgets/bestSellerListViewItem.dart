@@ -1,6 +1,7 @@
 import 'package:bookly/core/helpers/styles.dart';
-import 'package:bookly/features/home/presentation/views/widgets/bestSellerImage.dart';
-import 'package:bookly/features/home/presentation/views/widgets/bestSellerPriceAndRating.dart';
+import 'package:bookly/features/home/presentation/views/widgets/bestSellerPrice.dart';
+import 'package:bookly/features/home/presentation/views/widgets/bestSellerRating.dart';
+import 'package:bookly/features/home/presentation/views/widgets/booksListViewItem.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,8 +11,8 @@ class BestSellerListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-         GoRouter.of(context).push('/BookDetailsView');
+      onTap: () {
+        GoRouter.of(context).push('/BookDetailsView');
       },
       child: SizedBox(
         height: 125,
@@ -19,7 +20,7 @@ class BestSellerListViewItem extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10),
           child: Row(
             children: [
-              BestSellerImage(),
+              BooksListViewItem(),
               SizedBox(width: 30),
               Expanded(
                 child: Column(
@@ -36,7 +37,13 @@ class BestSellerListViewItem extends StatelessWidget {
                     ),
                     SizedBox(height: 3),
                     Text('J.K. Rowling', style: Styles.textStyle14),
-                    BestSellerPriceAndRating(),
+                    Row(
+                      children: [
+                        BestSellerPrice(),
+                        Spacer(),
+                        BestSellerRating(),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -47,6 +54,3 @@ class BestSellerListViewItem extends StatelessWidget {
     );
   }
 }
-
-
-
