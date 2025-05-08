@@ -5,6 +5,18 @@ class StartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      color: Color(0xff6B5FF8),
+      child: Center(
+        child: Text(
+          'Bookly',
+          style: TextStyle(
+            fontSize: 78,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
   }
 }
