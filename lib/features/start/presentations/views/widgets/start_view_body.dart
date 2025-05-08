@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class StartViewBody extends StatelessWidget {
   const StartViewBody({super.key});
 
