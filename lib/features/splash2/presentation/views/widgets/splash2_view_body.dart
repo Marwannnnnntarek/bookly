@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class Splash1ViewBody extends StatelessWidget {
-  const Splash1ViewBody({super.key});
+class Splash2ViewBody extends StatelessWidget {
+  const Splash2ViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class Splash1ViewBody extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/image 5.png',
+                    'assets/images/image 6.png',
                     width: double.infinity,
                     height: 517,
                     fit: BoxFit.fitWidth,
@@ -35,7 +35,7 @@ class Splash1ViewBody extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24.0),
                     child: Text(
-                      'Welcome to Bookly! Your Next Adventure Awaits',
+                      'Discover +50 Million International Books Now',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 28,
@@ -48,7 +48,7 @@ class Splash1ViewBody extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 29, right: 29),
                     child: Text(
-                      'Embark on a literary journey with AI-curated book recommendations that match your unique tastes for an adventure in every read',
+                      'Venture beyond borders with over 50 million books. Your next favorite read, from every corner of the world, awaits.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
@@ -64,8 +64,7 @@ class Splash1ViewBody extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         // TODO: Navigate to next screen
-                        context.go('/Splash2View');
-                        
+                         context.go('/Splash3View');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
