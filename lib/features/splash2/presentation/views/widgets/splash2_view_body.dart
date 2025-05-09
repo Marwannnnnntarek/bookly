@@ -86,6 +86,7 @@ class Splash2ViewBody extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // TODO: Skip to login
+                       context.go('/LoginView');
                     },
                     child: Text(
                       'Skip to login',

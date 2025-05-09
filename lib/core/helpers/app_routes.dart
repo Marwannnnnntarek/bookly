@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:myapp/features/login/presentation/views/login_view.dart';
 import 'package:myapp/features/splach1/presentation/views/splash1_view.dart';
 import 'package:myapp/features/splash2/presentation/views/splash2_view.dart';
 import 'package:myapp/features/splash3/presentation/views/splash3_view.dart';
@@ -8,8 +9,10 @@ final GoRouter router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, state) => const StartView()),
+    //  GoRoute(path: '/SplashView', builder: (context, state) => SplashView()),
     GoRoute(path: '/Splash1View', builder: (context, state) => const Splash1View()),
     GoRoute(path: '/Splash2View', builder: (context, state) => const Splash2View()),
     GoRoute(path: '/Splash3View', builder: (context, state) => const Splash3View()),
+    GoRoute(path: '/LoginView', builder: (context, state) => const LoginView()),
   ],
 );

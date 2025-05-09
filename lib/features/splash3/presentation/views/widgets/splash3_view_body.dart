@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Splash3ViewBody extends StatelessWidget {
   const Splash3ViewBody({super.key});
@@ -63,6 +64,7 @@ class Splash3ViewBody extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () {
                         // TODO: Navigate to next screen
+                         context.go('/LoginView');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -84,6 +86,7 @@ class Splash3ViewBody extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // TODO: Skip to login
+                       context.go('/Splash1View');
                     },
                     child: Text(
                       'Back to start',

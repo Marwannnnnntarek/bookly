@@ -65,7 +65,6 @@ class Splash1ViewBody extends StatelessWidget {
                       onPressed: () {
                         // TODO: Navigate to next screen
                         context.go('/Splash2View');
-                        
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -87,6 +86,7 @@ class Splash1ViewBody extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       // TODO: Skip to login
+                      context.go('/LoginView');
                     },
                     child: Text(
                       'Skip to login',
