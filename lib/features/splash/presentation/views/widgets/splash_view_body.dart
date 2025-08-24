@@ -14,7 +14,11 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [Image.asset(AppAssets.logo)],
+      children: [
+        Image.asset(AppAssets.logo),
+        SizedBox(height: 4),
+        Center(child: Text('Read Free Books')),
+      ],
     );
   }
 }
