@@ -1,5 +1,4 @@
-import 'package:bookly/core/utils/app_styles.dart';
-import 'package:bookly/features/home/presentation/views/widgets/best_seller_books_listview.dart';
+import 'package:bookly/features/home/presentation/views/widgets/newest_books_listview.dart';
 import 'package:bookly/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:bookly/features/home/presentation/views/widgets/featured_books_listview.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class HomeViewBody extends StatelessWidget {
             children: [
               HomeAppBar(),
               FeaturedBooksListview(),
-              BestSellerBooksListview(),
+              NewestBooksListview(),
             ],
           ),
         ),
