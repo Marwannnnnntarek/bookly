@@ -1,8 +1,14 @@
 import 'package:bookly/constants.dart';
-import 'package:bookly/core/utils/app_routes.dart';
+import 'package:bookly/core/functions/setup_service_locator.dart';
+import 'package:bookly/features/home/data/repos/home_repo_imp.dart';
 import 'package:bookly/features/home/domain/entities/book_entity.dart';
+import 'package:bookly/features/home/domain/use_cases/featured_books_use_case.dart';
+import 'package:bookly/features/home/domain/use_cases/newest_books_use_case.dart';
+import 'package:bookly/features/home/presentation/view_model/cubit/featured_books_cubit.dart';
+import 'package:bookly/features/home/presentation/view_model/cubit/newest_books_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main() async {
@@ -11,6 +17,7 @@ void main() async {
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox(kFeaturedBox);
   await Hive.openBox(kNewestBox);
+  setupServiceLocator();
   runApp(const MyApp());
 }
 
@@ -20,13 +27,20 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRoutes.router,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: kPrimaryColor,
-        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => FeaturedBooksCubit(
+            FeaturedBooksUseCase(GetIt.instance<HomeRepoImp>()),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => NewestBooksCubit(
+            NewestBooksUseCase(GetIt.instance<HomeRepoImp>()),
+          ),
+        ),
+      ],
+      child: Container(),
     );
   }
 }
