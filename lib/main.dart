@@ -6,6 +6,7 @@ import 'package:bookly/features/home/domain/use_cases/featured_books_use_case.da
 import 'package:bookly/features/home/domain/use_cases/newest_books_use_case.dart';
 import 'package:bookly/features/home/presentation/view_model/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/view_model/cubit/newest_books_cubit.dart';
+import 'package:bookly/core/utils/classes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -15,8 +16,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox(kFeaturedBox);
-  await Hive.openBox(kNewestBox);
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
   setupServiceLocator();
   runApp(const MyApp());
 }
@@ -32,15 +33,21 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             FeaturedBooksUseCase(GetIt.instance<HomeRepoImp>()),
-          ),
+          )..fetchFeaturedBooks(),
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
             NewestBooksUseCase(GetIt.instance<HomeRepoImp>()),
-          ),
+          )..fetchNewestBooks(),
         ),
       ],
-      child: Container(),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppRoutes.router,
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: kPrimaryColor,
+        ),
+      ),
     );
   }
 }
