@@ -1,9 +1,9 @@
 import 'package:bookly/constants.dart';
+import 'package:bookly/core/functions/save_box_data.dart';
 import 'package:bookly/core/utils/services/api_services.dart';
 import 'package:bookly/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:bookly/features/home/data/models/book_model/item.dart';
 import 'package:bookly/features/home/domain/entities/book_entity.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
   final ApiServices apiServices;
@@ -37,10 +37,5 @@ class HomeRemoteDataSourceImp extends HomeRemoteDataSource {
       books.add(Item.fromJson(bookMap));
     }
     return books;
-  }
-
-  void saveBoxData(List<BookEntity> books, String boxName) {
-    var box = Hive.box(boxName);
-    box.addAll(books);
   }
 }
