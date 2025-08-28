@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PreviewButton extends StatelessWidget {
-  const PreviewButton({super.key});
+class BookDetailsItemPreviewButton extends StatelessWidget {
+  const BookDetailsItemPreviewButton({super.key});
 
   @override
   Widget build(BuildContext context) {

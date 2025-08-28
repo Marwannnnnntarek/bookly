@@ -1,5 +1,5 @@
 import 'package:bookly/features/home/presentation/views/widgets/featuerd_books_listview_bloc_builder.dart';
-import 'package:bookly/features/home/presentation/views/widgets/home_app_bar.dart';
+import 'package:bookly/features/home/presentation/views/widgets/home_view_app_bar.dart';
 import 'package:bookly/features/home/presentation/views/widgets/newest_books_listview_bloc_builder.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class HomeViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Column(
             children: [
-              HomeAppBar(),
+              HomeViewAppBar(),
               FeatuerdBooksListviewBlocBuilder(),
               NewestBooksListviewBlocBuilder(),
             ],

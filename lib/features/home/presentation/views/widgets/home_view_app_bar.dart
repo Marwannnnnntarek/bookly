@@ -1,8 +1,8 @@
 import 'package:bookly/core/utils/classes/app_assets.dart';
 import 'package:flutter/material.dart';
 
-class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
+class HomeViewAppBar extends StatelessWidget {
+  const HomeViewAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

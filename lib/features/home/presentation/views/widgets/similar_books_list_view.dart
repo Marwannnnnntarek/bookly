@@ -1,4 +1,5 @@
-import 'package:bookly/core/utils/classes/app_assets.dart';
+import 'package:bookly/features/home/presentation/views/widgets/similar_books_listview_header.dart';
+import 'package:bookly/features/home/presentation/views/widgets/similar_books_listview_image.dart';
 import 'package:flutter/material.dart';
 
 class SimilarBooksListView extends StatelessWidget {
@@ -11,40 +12,16 @@ class SimilarBooksListView extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16, bottom: 16),
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'You Can Also Like',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            SimilarBooksListviewHeader(),
             SizedBox(height: 8),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.15,
-              child: ListView.builder(
+              child: ListView.separated(
+                separatorBuilder: (_, __) => const SizedBox(width: 8),
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 4),
-                    child: AspectRatio(
-                      aspectRatio: 2.5 / 4,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.red,
-                          image: const DecorationImage(
-                            fit: BoxFit.fill,
-                            image: AssetImage(AppAssets.testImage),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
+                  return SimilarBooksListviewImage();
                 },
               ),
             ),

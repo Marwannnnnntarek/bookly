@@ -1,4 +1,4 @@
-import 'package:bookly/core/utils/classes/app_styles.dart';
+import 'package:bookly/features/home/presentation/views/widgets/newest_books_listview_header.dart';
 import 'package:bookly/features/home/presentation/views/widgets/newest_books_listview_item.dart';
 import 'package:flutter/material.dart';
 
@@ -9,14 +9,9 @@ class NewestBooksListview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Text("Newest Books", style: AppStyles.textStyle18),
-          ),
-        ),
-        ListView.builder(
+        NewestBooksListviewHeader(),
+        ListView.separated(
+          separatorBuilder: (_, __) => const SizedBox(width: 8),
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: 10,

@@ -1,5 +1,5 @@
 import 'package:bookly/features/home/presentation/views/widgets/book_details_app_bar.dart';
-import 'package:bookly/features/home/presentation/views/widgets/book_details_items.dart';
+import 'package:bookly/features/home/presentation/views/widgets/book_details_item.dart';
 import 'package:bookly/features/home/presentation/views/widgets/similar_books_list_view.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class BookDetailsViewBody extends StatelessWidget {
           child: Column(
             children: [
               BookDetailsAppBar(),
-              BookDetailsItems(),
+              BookDetailsItem(),
               SimilarBooksListView(),
             ],
           ),

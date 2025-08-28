@@ -1,5 +1,5 @@
 import 'package:bookly/core/utils/classes/app_routes.dart';
-import 'package:bookly/core/utils/classes/app_styles.dart';
+import 'package:bookly/features/home/presentation/views/widgets/newest_books_listview_item_author.dart';
 import 'package:bookly/features/home/presentation/views/widgets/newest_books_listview_item_image.dart';
 import 'package:bookly/features/home/presentation/views/widgets/newest_books_listview_item_rating.dart';
 import 'package:bookly/features/home/presentation/views/widgets/newest_books_listview_item_title.dart';
@@ -28,7 +28,7 @@ class NewestBooksListviewItem extends StatelessWidget {
                   children: [
                     NewestBooksListviewItemTitle(),
                     SizedBox(height: 4),
-                    Text('J.K Rowling', style: AppStyles.textStyle14),
+                    NewestBooksListviewItemAuthor(),
                     SizedBox(height: 4),
                     NewestBooksListviewItemRating(),
                   ],
