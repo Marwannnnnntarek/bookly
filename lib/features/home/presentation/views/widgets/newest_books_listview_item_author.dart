@@ -4,10 +4,16 @@ import 'package:flutter/material.dart';
 class NewestBooksListviewItemAuthor extends StatelessWidget {
   const NewestBooksListviewItemAuthor({
     super.key,
+    required this.author,
   });
-
+  final String author;
   @override
   Widget build(BuildContext context) {
-    return Text('J.K Rowling', style: AppStyles.textStyle14);
+    return Text(
+      author,
+      style: AppStyles.textStyle14,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
+    );
   }
 }

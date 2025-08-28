@@ -9,31 +9,22 @@ class NewestBooksListviewBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Text("Newest Books", style: AppStyles.textStyle18),
-          ),
-        ),
-        BlocBuilder<NewestBooksCubit, NewestBooksState>(
-          builder: (context, state) {
-            if (state is NewestBooksLoading) {
-              return const CircularProgressIndicator();
-            } else if (state is NewestBooksSuccessful) {
-              return NewestBooksListview();
-            } else if (state is NewestBooksFailure) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(state.errMessage, style: AppStyles.textStyle14),
-              );
-            }
-            return const SizedBox.shrink();
-          },
-        ),
-      ],
+    return BlocBuilder<NewestBooksCubit, NewestBooksState>(
+      builder: (context, state) {
+        if (state is NewestBooksLoading) {
+          return const CircularProgressIndicator();
+        } else if (state is NewestBooksSuccessful) {
+          return NewestBooksListview(
+            books: state.books,
+          );
+        } else if (state is NewestBooksFailure) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Text(state.errMessage, style: AppStyles.textStyle14),
+          );
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 }

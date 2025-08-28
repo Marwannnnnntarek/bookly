@@ -7,8 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class NewestBooksListviewItem extends StatelessWidget {
-  const NewestBooksListviewItem({super.key});
-
+  const NewestBooksListviewItem(
+      {super.key,
+      required this.image,
+      required this.title,
+      required this.author});
+  final String image, title, author;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,18 +22,24 @@ class NewestBooksListviewItem extends StatelessWidget {
           context.push(AppRoutes.details);
         },
         child: SizedBox(
-          height: 110,
+          height: 130,
           child: Row(
             children: [
-              NewestBooksListViewItemImage(),
+              NewestBooksListViewItemImage(
+                image: image,
+              ),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    NewestBooksListviewItemTitle(),
+                    NewestBooksListviewItemTitle(
+                      title: title,
+                    ),
                     SizedBox(height: 4),
-                    NewestBooksListviewItemAuthor(),
-                    SizedBox(height: 4),
+                    NewestBooksListviewItemAuthor(
+                      author: author,
+                    ),
+                    Spacer(),
                     NewestBooksListviewItemRating(),
                   ],
                 ),

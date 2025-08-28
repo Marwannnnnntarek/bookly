@@ -17,7 +17,7 @@ class NewestBooksListviewItemRating extends StatelessWidget {
           Icon(Icons.star, color: Colors.yellow, size: 20),
           SizedBox(width: 2),
           Text(
-            '4.8',
+            '0',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
@@ -25,7 +25,7 @@ class NewestBooksListviewItemRating extends StatelessWidget {
           ),
           SizedBox(width: 2),
           Text(
-            '(25709)',
+            '(0)',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.normal,

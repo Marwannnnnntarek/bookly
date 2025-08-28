@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 class NewestBooksListviewItemTitle extends StatelessWidget {
   const NewestBooksListviewItemTitle({
     super.key,
+    required this.title,
   });
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.5,
       child: Text(
-        'Harry Potter and the Goblet of Fire',
+        title,
         style: AppStyles.textStyle18,
         maxLines: 2,
         overflow: TextOverflow.ellipsis,
