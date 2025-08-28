@@ -8,7 +8,7 @@ class FeaturedBooksUseCase {
 
   FeaturedBooksUseCase(this.homeRepo);
 
-  Future<Either<AppErrors, List<BookEntity>>> call() async {
-    return await homeRepo.fetchFeaturedBooks();
+  Future<Either<AppErrors, List<BookEntity>>> call([int pageNumber = 0]) async {
+    return await homeRepo.fetchFeaturedBooks(pageNumber: pageNumber);
   }
 }

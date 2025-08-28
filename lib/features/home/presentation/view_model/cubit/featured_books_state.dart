@@ -9,8 +9,17 @@ final class FeaturedBooksLoading extends FeaturedBooksState {}
 
 final class FeaturedBooksSuccessful extends FeaturedBooksState {
   final List<BookEntity> books;
+  final bool hasReachedEnd;
 
-  FeaturedBooksSuccessful({required this.books});
+  FeaturedBooksSuccessful({required this.books, this.hasReachedEnd = false});
+}
+
+final class FeaturedBooksPaginationLoading extends FeaturedBooksState {
+  final List<BookEntity> books;
+  final bool hasReachedEnd;
+
+  FeaturedBooksPaginationLoading(
+      {required this.books, this.hasReachedEnd = false});
 }
 
 final class FeaturedBooksFailure extends FeaturedBooksState {
