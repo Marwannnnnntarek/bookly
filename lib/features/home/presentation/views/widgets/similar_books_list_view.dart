@@ -1,4 +1,4 @@
-import 'package:bookly/core/utils/app_assets.dart';
+import 'package:bookly/core/utils/classes/app_assets.dart';
 import 'package:flutter/material.dart';
 
 class SimilarBooksListView extends StatelessWidget {

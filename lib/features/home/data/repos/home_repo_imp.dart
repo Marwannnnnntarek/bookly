@@ -1,4 +1,4 @@
-import 'package:bookly/core/utils/app_errors.dart';
+import 'package:bookly/core/utils/classes/app_errors.dart';
 import 'package:bookly/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:bookly/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:bookly/features/home/domain/entities/book_entity.dart';

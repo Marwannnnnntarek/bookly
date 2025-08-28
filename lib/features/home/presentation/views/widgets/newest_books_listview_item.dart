@@ -1,6 +1,6 @@
-import 'package:bookly/core/utils/app_assets.dart';
-import 'package:bookly/core/utils/app_routes.dart';
-import 'package:bookly/core/utils/app_styles.dart';
+import 'package:bookly/core/utils/classes/app_assets.dart';
+import 'package:bookly/core/utils/classes/app_routes.dart';
+import 'package:bookly/core/utils/classes/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

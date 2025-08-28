@@ -1,5 +1,5 @@
 import 'package:bookly/constants.dart';
-import 'package:bookly/core/functions/setup_service_locator.dart';
+import 'package:bookly/core/utils/functions/setup_service_locator.dart';
 import 'package:bookly/features/home/data/repos/home_repo_imp.dart';
 import 'package:bookly/features/home/domain/entities/book_entity.dart';
 import 'package:bookly/features/home/domain/use_cases/featured_books_use_case.dart';
