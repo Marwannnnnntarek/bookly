@@ -20,27 +20,31 @@ class FeaturedBooksListview extends StatefulWidget {
 
 class _FeaturedBooksListviewState extends State<FeaturedBooksListview> {
   late final ScrollController _scrollController;
-
+  var nextPage = 1;
+  var isLoading = false;
   @override
   void initState() {
     super.initState();
+    super.initState();
     _scrollController = ScrollController();
-    _scrollController.addListener(_onScroll);
+    _scrollController.addListener(_scrollListener);
   }
 
-  void _onScroll() {
-    if (!_scrollController.hasClients || widget.books.isEmpty) return;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.position.pixels;
-    // Trigger pagination when reaching 70% of the scrollable area
-    if (currentScroll >= maxScroll * 0.7) {
-      BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks();
+  void _scrollListener() async {
+    var currentPositions = _scrollController.position.pixels;
+    var maxScrollLength = _scrollController.position.maxScrollExtent;
+    if (currentPositions >= 0.7 * maxScrollLength) {
+      if (!isLoading) {
+        isLoading = true;
+        await BlocProvider.of<FeaturedBooksCubit>(context)
+            .fetchFeaturedBooks(pageNumber: nextPage++);
+        isLoading = false;
+      }
     }
   }
 
   @override
   void dispose() {
-    _scrollController.removeListener(_onScroll);
     _scrollController.dispose();
     super.dispose();
   }

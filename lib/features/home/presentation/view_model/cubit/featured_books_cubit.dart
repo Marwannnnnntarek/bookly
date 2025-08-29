@@ -9,47 +9,21 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
   FeaturedBooksCubit(this.featuredBooksUseCase) : super(FeaturedBooksInitial());
 
   final FeaturedBooksUseCase featuredBooksUseCase;
-  int _currentPage = 0;
-  bool _isLoading = false;
-  final List<BookEntity> _allBooks = [];
-  bool _hasReachedEnd = false;
 
-  Future<void> fetchFeaturedBooks({int? pageNumber}) async {
-    if (_isLoading || _hasReachedEnd) return;
-    _isLoading = true;
-
-    final int pageToLoad = pageNumber ?? _currentPage;
-    if (_allBooks.isNotEmpty) {
-      emit(FeaturedBooksPaginationLoading(
-          books: List<BookEntity>.unmodifiable(_allBooks),
-          hasReachedEnd: _hasReachedEnd));
-    } else {
+  Future<void> fetchFeaturedBooks({int pageNumber = 0}) async {
+    if (pageNumber == 0) {
       emit(FeaturedBooksLoading());
+    } else {
+      emit(FeaturedBooksPaginationLoading());
     }
-    final result = await featuredBooksUseCase.call(pageToLoad);
+    final result = await featuredBooksUseCase.call(pageNumber);
     result.fold(
       (failure) {
-        _isLoading = false;
         emit(FeaturedBooksFailure(
             errMessage: failure.message ?? 'Unknown error'));
       },
       (books) {
-        _isLoading = false;
-        if (books.isNotEmpty) {
-          _currentPage = pageToLoad + 1;
-          final Set<String> existingIds =
-              _allBooks.map((b) => b.entityID).toSet();
-          for (final book in books) {
-            if (!existingIds.contains(book.entityID)) {
-              _allBooks.add(book);
-            }
-          }
-        } else {
-          _hasReachedEnd = true;
-        }
-        emit(FeaturedBooksSuccessful(
-            books: List<BookEntity>.unmodifiable(_allBooks),
-            hasReachedEnd: _hasReachedEnd));
+        emit(FeaturedBooksSuccessful(books: books));
       },
     );
   }

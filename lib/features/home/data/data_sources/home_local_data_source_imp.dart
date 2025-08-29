@@ -10,12 +10,10 @@ class HomeLocalDataSourceImp extends HomeLocalDataSource {
     int endIndex = (pageNumber + 1) * 10;
     var box = Hive.box<BookEntity>(kFeaturedBox);
     int length = box.values.length;
-    if (startIndex >= length) {
+    if (startIndex >= length || endIndex > startIndex) {
       return [];
     }
-    // Clamp endIndex to the available length to avoid RangeError
-    final int clampedEndIndex = endIndex > length ? length : endIndex;
-    return box.values.toList().sublist(startIndex, clampedEndIndex);
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 
   @override
