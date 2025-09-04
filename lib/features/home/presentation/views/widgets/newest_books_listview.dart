@@ -20,9 +20,7 @@ class NewestBooksListview extends StatelessWidget {
           itemCount: books.length,
           itemBuilder: (context, index) {
             return NewestBooksListviewItem(
-              image: books[index].image,
-              title: books[index].title,
-              author: books[index].author,
+              book: books[index],
             );
           },
         ),

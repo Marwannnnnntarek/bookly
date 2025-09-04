@@ -1,8 +1,10 @@
+import 'package:bookly/core/utils/classes/app_routes.dart';
 import 'package:bookly/features/home/domain/entities/book_entity.dart';
 import 'package:bookly/features/home/presentation/view_model/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/views/widgets/featured_books_listview_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 typedef OnPaginationCallback = void Function();
 
@@ -59,8 +61,13 @@ class _FeaturedBooksListviewState extends State<FeaturedBooksListview> {
         scrollDirection: Axis.horizontal,
         itemCount: widget.books.length,
         itemBuilder: (context, index) {
-          return FeaturedBooksListviewImage(
-            image: widget.books[index].image,
+          return GestureDetector(
+            onTap: () {
+              context.push(AppRoutes.details, extra: widget.books[index]);
+            },
+            child: FeaturedBooksListviewImage(
+              image: widget.books[index].image,
+            ),
           );
         },
       ),

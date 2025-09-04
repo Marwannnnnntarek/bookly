@@ -22,7 +22,7 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       author: fields[2] as String,
       image: fields[3] as String,
       rate: fields[4] as num,
-      count: fields[5] as num,
+      previewLink: fields[5] as String,
     );
   }
 
@@ -41,7 +41,7 @@ class BookEntityAdapter extends TypeAdapter<BookEntity> {
       ..writeByte(4)
       ..write(obj.rate)
       ..writeByte(5)
-      ..write(obj.count);
+      ..write(obj.previewLink);
   }
 
   @override

@@ -15,7 +15,7 @@ class BookEntity {
   @HiveField(4)
   final num rate;
   @HiveField(5)
-  final num count;
+  final String previewLink;
 
   BookEntity({
     required this.entityID,
@@ -23,6 +23,6 @@ class BookEntity {
     required this.author,
     required this.image,
     required this.rate,
-    required this.count,
+    required this.previewLink,
   });
 }

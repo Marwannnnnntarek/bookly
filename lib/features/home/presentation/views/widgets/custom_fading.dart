@@ -15,17 +15,25 @@ class _CustomFadingState extends State<CustomFading>
 
   @override
   void initState() {
+    super.initState();
     animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 800));
 
     animation = Tween<double>(begin: .2, end: .8).animate(animationController);
 
     animationController.addListener(() {
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
 
     animationController.repeat(reverse: true);
-    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override

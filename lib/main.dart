@@ -4,9 +4,11 @@ import 'package:bookly/features/home/data/repos/home_repo_imp.dart';
 import 'package:bookly/features/home/domain/entities/book_entity.dart';
 import 'package:bookly/features/home/domain/use_cases/featured_books_use_case.dart';
 import 'package:bookly/features/home/domain/use_cases/newest_books_use_case.dart';
+import 'package:bookly/features/home/domain/use_cases/similar_books_use_case.dart';
 import 'package:bookly/features/home/presentation/view_model/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/view_model/cubit/newest_books_cubit.dart';
 import 'package:bookly/core/utils/classes/app_routes.dart';
+import 'package:bookly/features/home/presentation/view_model/cubit/similar_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -16,6 +18,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
+
+  // Clear existing boxes to resolve type casting issues
+  await Hive.deleteBoxFromDisk(kFeaturedBox);
+  await Hive.deleteBoxFromDisk(kNewestBox);
+
   await Hive.openBox<BookEntity>(kFeaturedBox);
   await Hive.openBox<BookEntity>(kNewestBox);
   setupServiceLocator();
@@ -39,6 +46,11 @@ class MyApp extends StatelessWidget {
           create: (context) => NewestBooksCubit(
             NewestBooksUseCase(GetIt.instance<HomeRepoImp>()),
           )..fetchNewestBooks(),
+        ),
+        BlocProvider(
+          create: (context) => SimilarBooksCubit(
+            SimilarBooksUseCase(GetIt.instance<HomeRepoImp>()),
+          )..fetchSimilarBooks(),
         ),
       ],
       child: MaterialApp.router(

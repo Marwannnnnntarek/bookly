@@ -1,8 +1,10 @@
+import 'package:bookly/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsItemPreviewButton extends StatelessWidget {
-  const BookDetailsItemPreviewButton({super.key});
-
+  const BookDetailsItemPreviewButton({super.key, this.books});
+  final BookEntity? books;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,7 +44,29 @@ class BookDetailsItemPreviewButton extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () async {
+                final previewLink = books?.previewLink;
+                if (previewLink != null && previewLink.isNotEmpty) {
+                  Uri uri = Uri.parse(previewLink);
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Could not open preview link'),
+                      ),
+                    );
+                  }
+                } else {
+                  // Show a snackbar or dialog to inform user that preview is not available
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content:
+                          Text('Preview link is not available for this book'),
+                    ),
+                  );
+                }
+              },
               child: const Text(
                 "Preview",
                 style: TextStyle(

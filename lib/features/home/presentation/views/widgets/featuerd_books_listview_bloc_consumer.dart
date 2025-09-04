@@ -34,7 +34,7 @@ class _FeatuerdBooksListviewBlocConsumerState
       },
       builder: (context, state) {
         if (state is FeaturedBooksLoading) {
-          FeaturedBooksListviewIndicator();
+          return FeaturedBooksListviewIndicator();
         } else if (state is FeaturedBooksSuccessful ||
             state is FeaturedBooksPaginationLoading ||
             state is FeaturedBooksPaginationFailure) {
