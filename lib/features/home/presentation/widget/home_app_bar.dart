@@ -6,9 +6,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      automaticallyImplyLeading: false,
+      backgroundColor: const Color(0xff100B20),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
