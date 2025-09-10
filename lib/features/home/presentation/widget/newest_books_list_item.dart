@@ -20,7 +20,7 @@ class NewestBooksListItem extends StatelessWidget {
               // Book Image
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
+                child: Image.network(
                   imageUrl,
                   width: 80,
                   height: 120,

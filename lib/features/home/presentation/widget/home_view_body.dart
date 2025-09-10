@@ -1,6 +1,6 @@
 import 'package:bookly/features/home/presentation/widget/featured_books_list_view.dart';
 import 'package:bookly/features/home/presentation/widget/home_header.dart';
-import 'package:bookly/features/home/presentation/widget/newest_books_list_view.dart';
+import 'package:bookly/features/home/presentation/widget/newest_books_bloc.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -17,7 +17,7 @@ class HomeViewBody extends StatelessWidget {
               SizedBox(height: 40),
               HomeHeader(),
               SizedBox(height: 12),
-              NewestBooksListView(),
+              NewestBooksBloc(),
             ],
           ),
         ),
