@@ -1,3 +1,4 @@
+import 'package:bookly/core/utils/url_launcher.dart';
 import 'package:bookly/features/home/data/models/book_model/item.dart';
 import 'package:flutter/material.dart';
 
@@ -17,9 +18,14 @@ class FeaturedBooksListView extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             child: AspectRatio(
               aspectRatio: 2 / 3, // typical book cover ratio
-              child: Image.network(
-                books[index].volumeInfo!.imageLinks?.thumbnail ?? '',
-                fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  UrlLauncher.openBookLink(context, books[index]);
+                },
+                child: Image.network(
+                  books[index].volumeInfo!.imageLinks?.thumbnail ?? '',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           );
