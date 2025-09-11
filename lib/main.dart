@@ -1,6 +1,6 @@
+import 'package:bookly/core/utils/app_routes.dart';
 import 'package:bookly/core/utils/set_up.dart';
 import 'package:bookly/features/home/data/repos/home_repo_imp.dart';
-import 'package:bookly/features/home/presentation/view/home_view.dart';
 import 'package:bookly/features/home/presentation/view_model/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/view_model/cubit/newest_books_cubit.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
                     ..fetchFeaturedBooks(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: AppRoutes.router,
         debugShowCheckedModeBanner: false,
-        home: const HomeView(),
       ),
     );
   }

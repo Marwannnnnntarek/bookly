@@ -12,7 +12,7 @@ class HomeHeader extends StatelessWidget {
         child: Text(
           'Newest Books',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),

@@ -1,5 +1,5 @@
-import 'package:bookly/core/utils/url_launcher.dart';
 import 'package:bookly/features/home/data/models/book_model/item.dart';
+import 'package:bookly/features/home/presentation/widget/featured_book_image.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedBooksListView extends StatelessWidget {
@@ -7,29 +7,18 @@ class FeaturedBooksListView extends StatelessWidget {
   final List<Item> books;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 180, // height for book cards
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemCount: books.length,
-        separatorBuilder: (context, index) => const SizedBox(width: 8),
-        itemBuilder: (context, index) {
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: AspectRatio(
-              aspectRatio: 2 / 3, // typical book cover ratio
-              child: InkWell(
-                onTap: () {
-                  UrlLauncher.openBookLink(context, books[index]);
-                },
-                child: Image.network(
-                  books[index].volumeInfo!.imageLinks?.thumbnail ?? '',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          );
-        },
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: SizedBox(
+        height: 240, // height for book cards
+        child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          itemCount: books.length,
+          separatorBuilder: (context, index) => const SizedBox(width: 8),
+          itemBuilder: (context, index) {
+            return FeaturedBookImage(books: books, index: index);
+          },
+        ),
       ),
     );
   }

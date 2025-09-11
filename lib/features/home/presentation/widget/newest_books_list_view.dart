@@ -18,10 +18,13 @@ class NewestBooksListView extends StatelessWidget {
             title: book.volumeInfo!.title ?? 'No Title',
             author: book.volumeInfo!.authors?.first ?? 'No Author',
             imageUrl: book.volumeInfo!.imageLinks?.thumbnail ?? 'No Image',
+            price: book.saleInfo!.listPrice?.amount?.toString() ?? 'Free',
+            rating: book.volumeInfo!.averageRating?.toString() ?? '0.0',
+            ratingsCount: book.volumeInfo!.ratingsCount?.toString() ?? '0',
           );
         },
         separatorBuilder: (context, index) {
-          return const SizedBox(height: 8);
+          return const SizedBox(height: 24);
         },
         itemCount: books.length,
       ),

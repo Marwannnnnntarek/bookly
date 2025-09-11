@@ -1,3 +1,7 @@
+import 'package:bookly/features/home/presentation/widget/newest_book_author.dart';
+import 'package:bookly/features/home/presentation/widget/newest_book_image.dart';
+import 'package:bookly/features/home/presentation/widget/newest_book_price_and_rating.dart';
+import 'package:bookly/features/home/presentation/widget/newest_book_title.dart';
 import 'package:flutter/material.dart';
 
 class NewestBooksListItem extends StatelessWidget {
@@ -6,8 +10,11 @@ class NewestBooksListItem extends StatelessWidget {
     required this.title,
     required this.author,
     required this.imageUrl,
+    required this.price,
+    required this.rating,
+    required this.ratingsCount,
   });
-  final String title, author, imageUrl;
+  final String title, author, imageUrl, price, rating, ratingsCount;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,17 +25,8 @@ class NewestBooksListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Book Image
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(
-                  imageUrl,
-                  width: 80,
-                  height: 120,
-                  fit: BoxFit.cover,
-                ),
-              ),
+              NewestBookImage(imageUrl: imageUrl),
               const SizedBox(width: 16),
-
               // Book Info
               Expanded(
                 child: Column(
@@ -36,23 +34,16 @@ class NewestBooksListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Title
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    NewestBookTitle(title: title),
                     const SizedBox(height: 4),
                     // Author
-                    Text(
-                      author,
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    NewestBookAuthor(author: author),
+                    // const Spacer(),
+                    const SizedBox(height: 8),
+                    NewestBookPriceAndRating(
+                      price: price,
+                      rating: rating,
+                      ratingsCount: ratingsCount,
                     ),
                   ],
                 ),
