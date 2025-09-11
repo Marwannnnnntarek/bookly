@@ -23,7 +23,7 @@ class NewestBooksListView extends StatelessWidget {
         separatorBuilder: (context, index) {
           return const SizedBox(height: 8);
         },
-        itemCount: 10,
+        itemCount: books.length,
       ),
     );
   }

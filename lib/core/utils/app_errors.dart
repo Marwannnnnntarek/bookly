@@ -11,21 +11,21 @@ class AppError {
 enum AppErrorType { network, server, timeout, parsing, unknown, noData }
 
 class NetworkError extends AppError {
-  NetworkError(String message) : super(message, type: AppErrorType.network);
+  NetworkError(super.message) : super(type: AppErrorType.network);
 }
 
 class ServerError extends AppError {
-  ServerError(String message) : super(message, type: AppErrorType.server);
+  ServerError(super.message) : super(type: AppErrorType.server);
 }
 
 class TimeoutError extends AppError {
-  TimeoutError(String message) : super(message, type: AppErrorType.timeout);
+  TimeoutError(super.message) : super(type: AppErrorType.timeout);
 }
 
 class ParsingError extends AppError {
-  ParsingError(String message) : super(message, type: AppErrorType.parsing);
+  ParsingError(super.message) : super(type: AppErrorType.parsing);
 }
 
 class NoDataError extends AppError {
-  NoDataError(String message) : super(message, type: AppErrorType.noData);
+  NoDataError(super.message) : super(type: AppErrorType.noData);
 }

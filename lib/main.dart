@@ -1,6 +1,7 @@
 import 'package:bookly/core/utils/set_up.dart';
 import 'package:bookly/features/home/data/repos/home_repo_imp.dart';
 import 'package:bookly/features/home/presentation/view/home_view.dart';
+import 'package:bookly/features/home/presentation/view_model/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presentation/view_model/cubit/newest_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,10 +17,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create:
-          (context) =>
-              NewestBooksCubit(getIt.get<HomeRepoImp>())..fetchNewestBooks(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create:
+              (context) =>
+                  NewestBooksCubit(getIt.get<HomeRepoImp>())
+                    ..fetchNewestBooks(),
+        ),
+        BlocProvider(
+          create:
+              (context) =>
+                  FeaturedBooksCubit(getIt.get<HomeRepoImp>())
+                    ..fetchFeaturedBooks(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: const HomeView(),
