@@ -1,6 +1,7 @@
-import 'package:bookly/core/utils/url_launcher.dart';
+import 'package:bookly/core/utils/app_routes.dart';
 import 'package:bookly/features/home/data/models/book_model/item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class FeaturedBookImage extends StatelessWidget {
   const FeaturedBookImage({
@@ -20,7 +21,8 @@ class FeaturedBookImage extends StatelessWidget {
         aspectRatio: 2 / 3, // typical book cover ratio
         child: InkWell(
           onTap: () {
-            UrlLauncher.openBookLink(context, books[index]);
+            // UrlLauncher.openBookLink(context, books[index]);
+            context.push(AppRoutes.bookDetailsRoute);
           },
           child: Image.network(
             books[index].volumeInfo!.imageLinks?.thumbnail ?? '',

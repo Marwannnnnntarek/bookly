@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BookDetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BookDetailsAppBar({super.key});
@@ -6,6 +7,7 @@ class BookDetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: const Color(0xff100B20),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -13,7 +15,7 @@ class BookDetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
           IconButton(
             icon: const Icon(Icons.close, color: Colors.white),
             onPressed: () {
-              Navigator.pop(context);
+              context.pop();
             },
           ),
           IconButton(
