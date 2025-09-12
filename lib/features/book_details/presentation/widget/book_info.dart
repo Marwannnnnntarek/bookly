@@ -1,3 +1,4 @@
+import 'package:bookly/features/book_details/presentation/widget/book_info_image.dart';
 import 'package:bookly/features/book_details/presentation/widget/book_info_rating.dart';
 import 'package:bookly/features/book_details/presentation/widget/preview_button.dart';
 import 'package:bookly/features/book_details/presentation/widget/price_button.dart';
@@ -29,40 +30,17 @@ class BookInfo extends StatelessWidget {
       child: Column(
         children: [
           // Book Image
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
-              imageUrl,
-              height: 250,
-              width: 160,
-              fit: BoxFit.cover,
-              errorBuilder:
-                  (context, error, stackTrace) =>
-                      const Icon(Icons.broken_image, size: 80),
-            ),
-          ),
+          BookInfoImage(imageUrl: imageUrl),
           const SizedBox(height: 16),
-
-          // Book Title
           NewestBookTitle(title: title),
-
           const SizedBox(height: 8),
-
-          // Author Name
           NewestBookAuthor(author: author),
           const SizedBox(height: 8),
           BookInfoRating(rating: rating, ratingsCount: ratingsCount),
           const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              children: [
-                // Price button
-                PriceButton(),
-                // Preview button
-                PreviewButton(),
-              ],
-            ),
+            child: Row(children: [const PriceButton(), const PreviewButton()]),
           ),
         ],
       ),
