@@ -1,4 +1,6 @@
 import 'package:bookly/features/book_details/presentation/widget/book_info_rating.dart';
+import 'package:bookly/features/book_details/presentation/widget/preview_button.dart';
+import 'package:bookly/features/book_details/presentation/widget/price_button.dart';
 import 'package:bookly/features/home/presentation/widget/newest_book_author.dart';
 import 'package:bookly/features/home/presentation/widget/newest_book_title.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +52,18 @@ class BookInfo extends StatelessWidget {
           NewestBookAuthor(author: author),
           const SizedBox(height: 8),
           BookInfoRating(rating: rating, ratingsCount: ratingsCount),
+          const SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              children: [
+                // Price button
+                PriceButton(),
+                // Preview button
+                PreviewButton(),
+              ],
+            ),
+          ),
         ],
       ),
     );

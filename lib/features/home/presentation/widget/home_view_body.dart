@@ -15,7 +15,7 @@ class HomeViewBody extends StatelessWidget {
             children: [
               FeaturedBooksBloc(),
               SizedBox(height: 40),
-              HomeHeader(),
+              HomeHeader(header: 'Newest Books'),
               SizedBox(height: 12),
               NewestBooksBloc(),
             ],
